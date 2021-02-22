@@ -1,6 +1,5 @@
 plugins {
     id "java-library"
-    id "org.sonarqube" version "2.7"
 }
 
 allprojects {
@@ -11,21 +10,8 @@ allprojects {
   version = "$baseVersion" + (snapshotVersion ? "-SNAPSHOT" : "")
 }
 
-sonarqube {
-    properties {
-        property "sonar.projectName", "Example of SonarQube Scanner for Gradle - Multimodule"
-        property "sonar.projectKey", "org.sonarqube:gradle-multimodule"
-    }
-}
-
 subprojects {
     apply plugin: 'java-library'
-    apply plugin: 'org.sonarqube'
-    sonarqube {
-        properties {
-            //property "sonar.java.libraries", 
-   	}
-    }
 }
 
 // In this section you declare where to find the dependencies of your project
