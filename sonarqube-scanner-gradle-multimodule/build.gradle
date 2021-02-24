@@ -3,20 +3,24 @@ plugins {
 }
 
 allprojects {
-  ext.baseVersion = "0.1"
-  ext.snapshotVersion = true
+    ext.baseVersion = "0.1"
+    ext.snapshotVersion = true
 
-  group = "org.sonarqube"
-  version = "$baseVersion" + (snapshotVersion ? "-SNAPSHOT" : "")
+    group = "org.sonarqube"
+    version = "$baseVersion" + (snapshotVersion ? "-SNAPSHOT" : "")
+
+    repositories {
+        mavenCentral()
+    }
 }
+
 
 subprojects {
     apply plugin: 'java-library'
+
+    dependencies {
+        testImplementation 'junit:junit:4.13'
+    }
 }
 
-// In this section you declare where to find the dependencies of your project
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-}
+
